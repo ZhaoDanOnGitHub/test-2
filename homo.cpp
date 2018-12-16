@@ -495,12 +495,14 @@ double HomoSite::Comentropy( unsigned short * tumorDis, unsigned int dispots ) {
 
 double HomoSite::Hunterp(unsigned short * tumorDis, unsigned int dispots, unsigned int reflen) {
 	int i;
-	double normalValue, delValue, insertValue;
+	double normalValue=0;
+	double delValue=0;
+	double insertValue=0;
 	//for (i = 0; i < dispots; i++) {
 		//normalValue += tumorDis[i] * reflen;
 	//}
 	for (i = 0; i < reflen - 1; i++) {
-		delValue += tumorDis[i] * (reflen - 1 - i);
+		delValue += tumorDis[i] * (reflen -(i+1));
 		normalValue += tumorDis[i] * (i + 1);
 	}
 	for (i = reflen - 1; i < dispots; i++) {
